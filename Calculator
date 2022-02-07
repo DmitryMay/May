@@ -1,0 +1,66 @@
+// Calculator
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+
+
+long double fact(int a)
+{
+    if (a < 0)
+    {
+        return 0;
+    }
+    else if (a == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        return a * fact(a - 1);
+    }
+}
+
+int main()
+{
+    setlocale(LC_ALL, "RU");
+    float a, b;
+    int i, res;
+    int N{ 0 };
+    char operation;
+    cout << "Введите первое число: ";
+    cin >> a;
+    cout << "Введите второе число: ";
+    cin >> b;
+    cout << "Выберите операцию: ";
+    cin >> operation;
+
+    switch (operation)
+    {
+    case '+':
+        cout << "a + b = " << a + b << '\n';
+        break;
+    case '-':
+        cout << "a - b = " << a - b << '\n';
+        break;
+    case '*':
+        cout << "a * b = " << a * b << '\n';
+        break;
+    case '/':
+        cout << "a / b = " << a / b << '\n';
+        break;
+    case '^':
+        cout << "Введите число: " << a << '\n' << "Введите степень: " << b << '\n' << "Результат: " << pow(a, b) << '\n';
+        break;
+    case '~':
+        cout << "Результат: " << sqrt(a) << '\n';
+        break;
+    case '!':
+        cout << "Факториал для числа " << a << " = " << fact(a) << endl;
+        return 0;
+        break;
+    default:
+        cout << "Ошибка!\n";
+    }
+    return 0;
+}
