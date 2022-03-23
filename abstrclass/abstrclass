@@ -1,0 +1,58 @@
+#include<iostream>
+using namespace std;
+class Figure
+{
+public:
+    virtual double Area() const = 0;
+    virtual  double Perimetr() const = 0;
+    virtual void Show() const = 0;
+    virtual ~Figure() {}
+};
+class Circle : public Figure
+{
+    double r;
+public:
+    Circle(double _r) : r(_r) {}
+    ~Circle() {}
+    void Show() const { cout << "<3 Circle <3" << endl; }
+    double Area() const { return 3.14 * r * r; }
+    double Perimetr() const { return 3.14 * 2 * r; }
+};
+class Rectangle : public Figure
+{
+    double a, b;
+public:
+    Rectangle(double _a, double _b) : a(_a), b(_b) {}
+    ~Rectangle() {}
+    double Area() const { return a * b; }
+    double Perimetr() const { return 2 * a * b; }
+    void Show() const { cout << "<3 Rectangle <3" << endl; }
+};
+class Triangle : public Figure
+{
+    double a, b, c, h;
+public:
+    Triangle(double _a, double _b, double _c, double _h) : a(_a), b(_b), c(_c), h(_h) {}
+    ~Triangle() {}
+    double Area() const { return ((b * h) / 2); }
+
+    double Perimetr() const { return a + b + c; }
+    void Show() const { cout << "<3 Triangle <3" << endl; }
+};
+int main()
+{
+    setlocale(LC_ALL, "RU");
+    Figure* figure[3];
+    figure[0] = new Triangle(5, 6, 7, 8);
+    figure[1] = new Circle(5);
+    figure[2] = new Rectangle(3, 5);
+    for (int i = 0; i < 3; i++)
+    {
+        figure[i]->Show();
+        cout << " Площадь = "<< figure[i]->Area() << endl;
+        cout <<" Периметр = " << figure[i]->Perimetr() << endl;
+        delete figure[i];
+
+    }
+    return 0;
+}
