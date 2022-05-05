@@ -1,0 +1,70 @@
+#include<iostream>
+#include<string> 
+#include<iostream>
+#include<string> 
+
+using namespace std;
+class rogue
+{
+private:
+	string hair, color_eye, nose;
+	int age;
+public:
+
+	rogue(int ageS, string hairS, string color_eyeS, string noseS)
+	{
+		age = ageS;
+		hair = hairS;
+		color_eye = color_eyeS;
+		nose = noseS;
+	}
+	~rogue() {
+
+		cout << "Rogue Not found.   ";
+	}
+	string Gethair() {
+		return hair;
+	}
+	void Sethair(string hairS) {
+		hair = hairS;
+	}
+	string Getcolor_eye() {
+		return color_eye;
+	}
+	void Setcolor_eye(string color_eyeS) {
+		color_eye = color_eyeS;
+	}
+	string Getnose() {
+		return nose;
+	}
+	void Setnose(string noseS) {
+		nose = noseS;
+	}
+	int Getage()
+	{
+		return age;
+	}
+	void Setage(int ageS)
+	{
+		age = ageS;
+	}
+	void Vvod()
+	{
+		cout << "Human" << "\nhair: " << hair;
+		cout << "\nnose: " << nose;
+		cout << "\ncolor eye: " << color_eye;
+		cout << "\nAge: " << age << endl << endl;
+	}
+
+
+};
+int main()
+{
+	rogue R1(41, "dark", "green", "middle");
+	R1.Vvod();
+
+	rogue R2(23, "Light", "blue", "big");
+	R2.Vvod();
+
+	return (0);
+}
