@@ -1,0 +1,159 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+using namespace std;
+class Animal
+{
+protected:
+    double Vozr;
+	int Height;
+	float Mass;
+	string Name;
+	string Gender;
+	string Type;
+	string Color;
+public:
+
+	Animal();
+	Animal(double Vozr, int Height, float Mass, string Name, string Gender, string Type, string Color);
+	~Animal() { cout << "\n" << "End"; };
+	void Getter(float m, int& h, double& v, string& n, string& g, string& t, string& c);
+	void Getter(float m, int& h, string& n, string& g, string& t, string& c);
+	double GetVozr(double& v);
+	void Setter(float v, int h, double m, string n, string g, string t, string c);
+	void Show()
+
+	{
+		ofstream fout("info.txt");
+		cout << "Животное: " << "\n"
+			<< "Возраст = " << Vozr << '\n'
+			<< "Рост = " << Height << '\n'
+			<< "Вес = " << Mass << '\n'
+			<< "Имя = " << Name << '\n'
+			<< "Пол = " << Gender << '\n'
+			<< "Вид =  " << Type << '\n'
+			<< "Цвет = " << Color << '\n';
+		fout << "Животное: " << "\n"
+			<< "Возраст = " << Vozr << '\n'
+			<< "Рост = " << Height << '\n'
+			<< "Вес = " << Mass << '\n'
+			<< "Имя = " << Name << '\n'
+			<< "Пол = " << Gender << '\n'
+			<< "Вид =  " << Type << '\n'
+			<< "Цвет = " << Color << '\n';
+
+	}
+};
+
+class Human :protected Animal
+
+{
+public:
+	Human();
+	Human(double Vozr, int Height, float Massa, string Name, string Gender, string Type, string Color)
+	{}
+
+	void Getter(float& m, double& v, int& h, string& n, string& g);
+	void Getter(float& m, string& n, string& g);
+	double GetVozr(double& v);
+	int GetHeight(int& h);
+	void Setter(float v, int h, double m, string n, string g);
+	void Show()
+	{
+		cout << "Человек: " << "\n"	
+			<< "Возраст = " << Vozr << '\n'
+			<< "Рост = " << Height << '\n'
+			<< "Вес = " << Mass << '\n'
+			<< "Имя = " << Name << '\n'
+			<< "Пол = " << Gender << '\n';
+		ofstream fout("info2.txt");
+		fout << "Человек: " << "\n"
+			<< "Возраст = " << Vozr << '\n'
+			<< "Рост = " << Height << '\n'
+			<< "Вес = " << Mass << '\n'
+			<< "Имя = " << Name << '\n'
+			<< "Пол = " << Gender << '\n';
+	}
+};
+double Animal::GetVozr(double& v)
+{
+	v = Vozr;
+	return v;
+}
+
+	void Animal::Getter(float m, int& h, string & n, string & g, string & t, string & c)
+{
+	m = Mass;
+	h = Height;
+	n = Name;
+	g = Gender;
+	t = Type;
+	c = Color;
+}
+void Animal::Setter(float m, int h, double v, string n, string g, string t, string c)
+{
+	Vozr = v;
+	Height = h;
+	Mass = m;
+	Name = n;
+	Gender = g;
+	Type = t;
+	Color = c;
+}
+void Human::Getter(float& m, string & n, string & g)
+{
+	m = Mass;
+	n = Name;
+	g = Gender;
+}
+int Human::GetHeight(int& h)
+{
+	h = Height;
+	return h;
+}
+double Human::GetVozr(double& v)
+{
+	v = Vozr;
+	return v;
+}
+void Human::Setter(float m, int h, double v, string n, string g)
+{
+	Vozr = v;
+	Height = h;
+	Mass = m;
+	Name = n;
+	Gender = g;
+}
+Human::Human()
+{
+	Setter(15, 167, 60, "Kaneki", "Male");
+}
+Animal::Animal()
+{
+	Setter(5, 50, 10, "Yantarik", "Male", "Pomeranian", "Orange");
+}
+double operator+(Human FirstHuman, Animal FirstAnimal)
+{
+	double v;
+	double voz[2];
+	voz[0] = FirstHuman.GetVozr(v);
+	voz[1] = FirstAnimal.GetVozr(v);
+	double s = voz[1] + voz[0];
+	return s;
+};
+int main()
+{
+	double v;
+	setlocale(LC_ALL, "ru");
+	Human FirstHuman;
+	Animal FirstAnimal;
+	double v[2];
+	voz[0] = FirstHuman.GetVozr(v);
+	voz[1] = FirstAnimal.GetVozr(v);
+	FirstAnimal.Show();
+	FirstHuman.Show();
+	if (voz[0] < voz[1])
+		cout << "Животное весит больше";
+	if (voz[1] < voz[0])
+		cout << "Человек весит больше";
+}
