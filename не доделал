@@ -145,15 +145,5 @@ int main()
 {
 	double v;
 	setlocale(LC_ALL, "ru");
-	Human FirstHuman;
-	Animal FirstAnimal;
-	double v[2];
-	voz[0] = FirstHuman.GetVozr(v);
-	voz[1] = FirstAnimal.GetVozr(v);
-	FirstAnimal.Show();
-	FirstHuman.Show();
-	if (voz[0] < voz[1])
-		cout << "Животное весит больше";
-	if (voz[1] < voz[0])
-		cout << "Человек весит больше";
+
 }
